@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src='jquery-3.2.1.min.js' type="text/javascript"></script>
+        <script src='knockout-3.4.1.js' type="text/javascript"></script>
+        <script src='slider.js' type="text/javascript" defer="defer"></script> 
+    </head>
+
+    <body>
+        <div class="tutorial-slider">
+            <div class="ctr" data-bind="style:{width:width, height:height}">
+                <img class="close-popup" src="./images/close.png"/>
+                <div class="images" data-bind="template: {name:'imageTpl', foreach:images}"></div>
+            </div>
+            <div class="slider-control-block">
+                <div class="controls" data-bind="template: { name: 'controlTpl', foreach: imageViewModels}"></div>
+                <div class="arrows" data-bind="template: { name: 'arrowsTpl' }"></div>
+                <div class="tutorial-tips" data-bind="template: {name: 'tutorialTips'}"></div>
+                <div class="no-more">БОЛЬШЕ НЕ ПОКАЗЫВАТЬ</div>
+            </div>
+        </div>
+    </body>
+
+    <script id="imageTpl" type="text/html">
+        <img data-bind="attr : {src : url}"/>
+    </script>
+    <script id="controlTpl" type="text/html">
+        <span data-bind="css : {active : active()}, click : $parent.onCtrlClick.bind($parent)"></span>
+    </script>
+    <script id="tutorialTips" type="text/html">
+        <span class="tutorial-tip">У вас есть не только к вашему личному кабинету, но и к привязанным родственникам</span>
+        <span class="tutorial-tip">Следите за своими записями и готовностью анализов</span>
+        <span class="tutorial-tip">Отсканированные результаты анализов и результаты процедур можно скачать в любое удобное для вас время</span>
+        <span class="tutorial-tip">Всех ваших лечащих врачей можно найти в этой вкладке</span>
+        <span class="tutorial-tip">Редактируйте информацию о себе</span>
+        <span class="tutorial-tip">Скачайте все документы по итогам прошедшего визита</span>
+        <span class="tutorial-tip">День и время приема</span>
+        <span class="tutorial-tip">Специлизация врача</span>
+        <span class="tutorial-tip">Количество визитов в выбранный день</span>
+        <span class="tutorial-tip">В календаре могут отображаться записи во всех наших клиниках</span>
+        <span class="tutorial-tip">Вы можете отменять и переносить события на более удобное время, а также печатать обходные листы</span>
+        <span class="tutorial-tip">На вкладке "Анализы и диагностика" размещаются результаты всех приемов и анализов, которые вы можете скачать в виде pdf- или jpg-файла</span>
+        <span class="tutorial-tip">Врач, назначивший анализ или диагностику</span>
+        <span class="tutorial-tip">1) Выделите несколько анализов...<br>2) и скачайте все документы в один клик)</span>
+        <span class="tutorial-tip">Скачайте заключение врача по анализам в один клик</span>
+    </script>
+    <script id="arrowsTpl" type="text/html">
+        <div class="prev-arrow" data-bind="click: prevImage">
+                <div class="arrow-left"></div>
+        </div>
+        <div class="next-arrow" data-bind="click: nextImage">
+                <div class="arrow-right"></div>
+        </div>
+    </script>
+</html>
